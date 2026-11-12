@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXO-PLANET HABITABILITY CLASSIFIER</title>
+    <meta name="description" content="Scientific exoplanet habitability classification and document analysis dashboard.">
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Animation System -->
+    <link rel="stylesheet" href="/static/css/animations.css">
+</head>
+<body>
+
+    <!-- ============================================================== -->
+    <!-- 1. MINIMAL STICKY NAVIGATION (CENTERED LINKS ONLY)             -->
+    <!-- ============================================================== -->
+    <header class="app-header-sticky">
+        <nav class="nav-links" id="navMenu">
+            <a href="#hero-section" class="nav-item active">HOME</a>
+            <a href="#analysis-section" class="nav-item">PLANET ANALYSIS</a>
+            <a href="#document-section" class="nav-item">DOCUMENT ANALYSIS</a>
+        </nav>
+    </header>
+
+    <!-- ============================================================== -->
+    <!-- 2. FULL-SCREEN CINEMATIC LANDING HERO                          -->
+    <!-- ============================================================== -->
+    <section id="hero-section" class="hero-fullscreen">
+        <!-- Subtle Animated Stardust Background -->
+        <div class="stars-bg-canvas" aria-hidden="true">
+            <span class="star s-1"></span>
+            <span class="star s-2"></span>
+            <span class="star s-3"></span>
+            <span class="star s-4"></span>
+            <span class="star s-5"></span>
+            <span class="star s-6"></span>
+            <span class="star s-7"></span>
+            <span class="star s-8"></span>
+            <span class="star s-9"></span>
+            <span class="star s-10"></span>
+        </div>
+
+        <div class="hero-container">
+            <!-- Large Centered Hero Title -->
+            <h1 class="hero-main-title">
+                EXO-PLANET HABITABILITY CLASSIFIER
+            </h1>
+
+            <!-- Large Planetary Orbit Animation -->
+            <div class="planetary-system-wrapper" aria-hidden="true">
+                <div class="planetary-system">
+                    <!-- Central Host Star / Planet with glowing corona -->
+                    <div class="central-sun">
+                        <div class="sun-corona"></div>
+                        <div class="sun-core"></div>
+                    </div>
+
+                    <!-- Orbital Ring 1 (Inner Terrestrial) -->
+                    <div class="orbit-path orbit-1">
+                        <div class="orbiting-planet planet-rocky"></div>
+                    </div>
+
+                    <!-- Orbital Ring 2 (Habitable Zone Orbit with Atmosphere Glow) -->
+                    <div class="orbit-path orbit-2">
+                        <div class="orbiting-planet planet-habitable">
+                            <span class="planet-atmosphere-glow"></span>
+                        </div>
+                    </div>
+
+                    <!-- Orbital Ring 3 (Gas Giant Orbit) -->
+                    <div class="orbit-path orbit-3">
+                        <div class="orbiting-planet planet-gas"></div>
+                    </div>
+
+                    <!-- Orbital Ring 4 (Outer Ice World) -->
+                    <div class="orbit-path orbit-4">
+                        <div class="orbiting-planet planet-ice"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prominent Primary Action Buttons -->
+            <div class="hero-actions-group">
+                <a href="#analysis-section" class="btn btn-hero-primary" id="heroBtnAnalyze">
+                    ANALYZE A PLANET
+                </a>
+                <a href="#document-section" class="btn btn-hero-secondary" id="heroBtnUpload">
+                    UPLOAD DOCUMENT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="main-layout">
+
+        <!-- ============================================================== -->
+        <!-- 3. PLANET ANALYSIS SECTION                                     -->
+        <!-- ============================================================== -->
+        <section id="analysis-section" class="card search-card reveal-on-scroll">
+            <div class="section-title-header">
+                <h2>PLANET ANALYSIS</h2>
+            </div>
+
+            <div class="search-form-layout">
+                <div class="search-input-box">
+                    <input 
+                        type="text" 
+                        id="planetSearchInput" 
+                        class="search-input-field" 
+                        placeholder="Search or select a planet..." 
+                        autocomplete="off"
+                    />
+                    <div id="planetDropdown" class="planet-dropdown hidden">
+                        <!-- Populated dynamically with exoplanet names from dataset -->
+                    </div>
+                </div>
+
+                <div class="search-btn-container">
+                    <button type="button" id="predictBtn" class="btn btn-action-gold" disabled>
+                        ANALYZE PLANET
+                    </button>
+                    <button type="button" id="resetBtn" class="btn btn-action-outline">
+                        RESET
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Suggestions -->
+            <div class="quick-suggestions-row">
+                <span class="suggestions-label">PRESETS:</span>
+                <div class="chip-container" id="quickPickChips">
+                    <button type="button" class="preset-chip" data-planet="Earth">Earth</button>
+                    <button type="button" class="preset-chip" data-planet="Kepler-452 b">Kepler-452 b</button>
+                    <button type="button" class="preset-chip" data-planet="Kepler-442 b">Kepler-442 b</button>
+                    <button type="button" class="preset-chip" data-planet="TRAPPIST-1 e">TRAPPIST-1 e</button>
+                    <button type="button" class="preset-chip" data-planet="Kepler-186 f">Kepler-186 f</button>
+                    <button type="button" class="preset-chip" data-planet="Proxima Cen b">Proxima Cen b</button>
+                    <button type="button" class="preset-chip" data-planet="Kepler-22 b">Kepler-22 b</button>
+                    <button type="button" class="preset-chip" data-planet="Kepler-221 b">Kepler-221 b</button>
+                    <button type="button" class="preset-chip" data-planet="HIP 78530 b">HIP 78530 b</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- 4. PREDICTION RESULT & PLANET PROFILE                          -->
+        <!-- ============================================================== -->
+        <section id="result-section" class="prediction-view-container hidden">
+            
+            <!-- Clean Result Card (Visually dominant, strictly HABITABLE / NON-HABITABLE) -->
+            <div class="card prediction-card reveal-on-scroll" id="mainResultCard">
+                <div class="prediction-card-body">
+                    <div class="target-planet-heading">
+                        <span class="target-label">PLANET</span>
+                        <h2 id="resultPlanetName">—</h2>
+                    </div>
+
+                    <!-- Clean Binary Verdict Banner -->
+                    <div class="verdict-banner-box" id="predictionVerdictBox">
+                        <div class="verdict-tag">HABITABILITY</div>
+                        <div class="verdict-title" id="predictionVerdictText">—</div>
+                        <!-- Displayed ONLY when result is HABITABLE -->
+                        <div class="habitable-score-text hidden" id="habitableScoreBadge"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Planet Profile Statistic Cards -->
+            <div class="card profile-card reveal-on-scroll" id="profileSection">
+                <div class="card-top-bar">
+                    <h3>PLANET PROFILE</h3>
+                </div>
+
+                <div class="stat-cards-grid">
+                    <div class="stat-box">
+                        <span class="stat-name">Planet Radius</span>
+                        <span class="stat-num" id="profRadius">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Planet Mass</span>
+                        <span class="stat-num" id="profMass">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Planet Density</span>
+                        <span class="stat-num" id="profDensity">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Orbital Period</span>
+                        <span class="stat-num" id="profPeriod">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Semi-major Axis</span>
+                        <span class="stat-num" id="profSemiMajor">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Eccentricity</span>
+                        <span class="stat-num" id="profEccentricity">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Stellar Temperature</span>
+                        <span class="stat-num" id="profStellarTeff">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Stellar Radius</span>
+                        <span class="stat-num" id="profStellarRadius">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-name">Stellar Mass</span>
+                        <span class="stat-num" id="profStellarMass">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habitability Breakdown & Key Factors -->
+            <div class="analysis-dual-grid">
+                
+                <!-- Habitability Parameters with Clean Horizontal Animated Bars -->
+                <div class="card breakdown-card reveal-on-scroll">
+                    <div class="card-top-bar">
+                        <h3>HABITABILITY PARAMETERS</h3>
+                    </div>
+
+                    <div class="breakdown-meter-list">
+                        <div class="meter-item">
+                            <div class="meter-header">
+                                <span>Planetary Size</span>
+                                <strong id="barValSize">0%</strong>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" id="barFillSize" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="meter-item">
+                            <div class="meter-header">
+                                <span>Stellar Conditions</span>
+                                <strong id="barValStellar">0%</strong>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" id="barFillStellar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="meter-item">
+                            <div class="meter-header">
+                                <span>Orbital Conditions</span>
+                                <strong id="barValOrbital">0%</strong>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" id="barFillOrbital" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="meter-item">
+                            <div class="meter-header">
+                                <span>Temperature</span>
+                                <strong id="barValTemp">0%</strong>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" id="barFillTemp" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Factors (Simplified, No ML Model Names or Algorithm Jargon) -->
+                <div class="card rationale-card reveal-on-scroll">
+                    <div class="card-top-bar">
+                        <h3>KEY FACTORS</h3>
+                    </div>
+
+                    <div class="feature-importance-list">
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <strong>Orbital Conditions</strong>
+                                <span class="factor-tag">Primary</span>
+                            </div>
+                            <p>Circumstellar distance, orbital period, and insolation equilibrium within habitable boundaries.</p>
+                        </div>
+
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <strong>Stellar Conditions</strong>
+                                <span class="factor-tag">Primary</span>
+                            </div>
+                            <p>Host star effective surface temperature, stellar radius, and radiative spectral profile.</p>
+                        </div>
+
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <strong>Planetary Properties</strong>
+                                <span class="factor-tag">Secondary</span>
+                            </div>
+                            <p>Physical radius, estimated bulk mass, and retention of a stable secondary atmosphere.</p>
+                        </div>
+
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <strong>Temperature Profile</strong>
+                                <span class="factor-tag">Secondary</span>
+                            </div>
+                            <p>Equilibrium temperature supporting liquid surface water and radiation flux balance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earth Reference Comparison Section -->
+            <div class="card visual-analysis-card reveal-on-scroll">
+                <div class="card-top-bar">
+                    <h3>EARTH REFERENCE</h3>
+                </div>
+
+                <!-- Comparison Table: Selected Planet vs Earth -->
+                <div class="table-responsive">
+                    <table class="table comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th id="thPlanetName">Selected Planet</th>
+                                <th>Earth Reference</th>
+                                <th>Scientific Unit</th>
+                                <th>Relative Ratio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="earthComparisonBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2D Comparison Charts -->
+                <div class="charts-2d-grid">
+                    <div class="chart-box">
+                        <h4>Planetary Radius Comparison (R⊕)</h4>
+                        <div class="chart-bar-block">
+                            <div class="chart-label-row">
+                                <span id="visLblPlanetRadius">Selected</span>
+                                <span id="visValPlanetRadius">—</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-bar-gold" id="visFillPlanetRadius" style="width: 0%;"></div>
+                            </div>
+                            <div class="chart-label-row">
+                                <span>Earth Reference (1.00 R⊕)</span>
+                                <span>1.00 R⊕</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-bar-navy" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <h4>Semi-Major Axis / Orbit Distance (AU)</h4>
+                        <div class="chart-bar-block">
+                            <div class="chart-label-row">
+                                <span id="visLblPlanetAxis">Selected</span>
+                                <span id="visValPlanetAxis">—</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-bar-gold" id="visFillPlanetAxis" style="width: 0%;"></div>
+                            </div>
+                            <div class="chart-label-row">
+                                <span>Earth Orbit (1.00 AU)</span>
+                                <span>1.00 AU</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-bar-navy" style="width: 33%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <h4>Host Star Effective Temperature (K)</h4>
+                        <div class="chart-bar-block">
+                            <div class="chart-label-row">
+                                <span id="visLblPlanetTeff">Selected Star</span>
+                                <span id="visValPlanetTeff">—</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-bar-gold" id="visFillPlanetTeff" style="width: 0%;"></div>
+                            </div>
+                            <div class="chart-label-row">
+                                <span>Sun (5,778 K)</span>
+                                <span>5,778 K</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-bar-navy" style="width: 57%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-box">
+                        <h4>Primary Physical Factors</h4>
+                        <div class="importance-bars">
+                            <div class="imp-row">
+                                <span>Equilibrium Temperature</span>
+                                <div class="imp-track"><div style="width: 90%;"></div></div>
+                            </div>
+                            <div class="imp-row">
+                                <span>Insolation Flux</span>
+                                <div class="imp-track"><div style="width: 82%;"></div></div>
+                            </div>
+                            <div class="imp-row">
+                                <span>Host Star Temperature</span>
+                                <div class="imp-track"><div style="width: 65%;"></div></div>
+                            </div>
+                            <div class="imp-row">
+                                <span>Planet Radius</span>
+                                <div class="imp-track"><div style="width: 58%;"></div></div>
+                            </div>
+                            <div class="imp-row">
+                                <span>Stellar Luminosity</span>
+                                <div class="imp-track"><div style="width: 44%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- 5. DOCUMENT ANALYSIS (PDF / IMAGE)                             -->
+        <!-- ============================================================== -->
+        <section id="document-section" class="card doc-analysis-card reveal-on-scroll">
+            <div class="section-title-header">
+                <h2>DOCUMENT ANALYSIS</h2>
+            </div>
+
+            <!-- Upload Area -->
+            <div class="upload-dropzone-box" id="uploadDropzone">
+                <input type="file" id="docFileInput" accept=".pdf,.png,.jpg,.jpeg" class="file-input-hidden" />
+                <div class="dropzone-inner-content">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-prompt-text">
+                        <strong>DROP PDF OR IMAGE HERE</strong><br>
+                        <span class="subtext">or click <strong>[ CHOOSE FILE ]</strong></span>
+                    </div>
+                    <div class="doc-format-text">Supported formats: PDF, PNG, JPG, JPEG (Max 15 MB)</div>
+                </div>
+            </div>
+
+            <!-- Upload Info & Action Controls -->
+            <div class="doc-control-bar">
+                <div class="file-status-display" id="fileStatusDisplay">
+                    <span id="selectedFileName">No document selected</span>
+                    <span id="selectedFileSize" class="file-size-tag"></span>
+                </div>
+
+                <div class="doc-btn-group">
+                    <button type="button" id="uploadBtn" class="btn btn-action-gold" disabled>
+                        ANALYZE DOCUMENT
+                    </button>
+                    <button type="button" id="testPdfBtn" class="btn btn-action-outline-gold">
+                        Sample PDF (Kepler-452b Paper)
+                    </button>
+                    <button type="button" id="testImgBtn" class="btn btn-action-outline-gold">
+                        Sample Image (Observation Sheet)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Multiple Planets Choice Notice -->
+            <div id="multiplePlanetsNotice" class="multiple-planets-notice hidden">
+                <div class="mp-header">
+                    <strong>MULTIPLE PLANETS DETECTED</strong>
+                    <p>Which planet would you like to analyse?</p>
+                </div>
+                <div class="mp-buttons-list" id="multiplePlanetsButtons">
+                    <!-- Populated dynamically with detected planet buttons -->
+                </div>
+            </div>
+
+            <!-- Extracted Document Evidence & Result -->
+            <div id="docResultContainer" class="doc-results-wrapper hidden">
+                
+                <div class="card-top-bar">
+                    <h3>DOCUMENT EVIDENCE</h3>
+                    <div id="docMatchStatus"></div>
+                </div>
+
+                <div class="evidence-stats-grid">
+                    <div class="evidence-stat-card">
+                        <span class="ev-label">Detected Planet:</span>
+                        <strong class="ev-val" id="evidencePlanetName">—</strong>
+                    </div>
+                    <div class="evidence-stat-card">
+                        <span class="ev-label">MODEL INPUT COMPLETENESS:</span>
+                        <strong class="ev-val" id="evidenceCompleteness">—</strong>
+                    </div>
+                    <div class="evidence-stat-card">
+                        <span class="ev-label">DATASET MATCH:</span>
+                        <strong class="ev-val" id="evidenceDatasetMatch">—</strong>
+                    </div>
+                </div>
+
+                <!-- Simplified Evidence Table: PARAMETER | EXTRACTED VALUE | SCIENTIFIC UNIT | CONTEXT -->
+                <div class="table-responsive">
+                    <table class="table evidence-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Extracted Value</th>
+                                <th>Scientific Unit</th>
+                                <th>Context Snippet</th>
+                            </tr>
+                        </thead>
+                        <tbody id="evidenceTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Clean Scientific Result Card (No ML model names / confidence per Section 11) -->
+                <div class="doc-prediction-card" id="docPredictionCard">
+                    <div class="doc-result-clean-header">
+                        <span class="target-label">PLANET</span>
+                        <h2 id="docResultPlanetName">—</h2>
+                    </div>
+
+                    <div class="doc-verdict-box" id="docVerdictBox">
+                        <div class="verdict-label">HABITABILITY</div>
+                        <div class="doc-verdict-title" id="docResultPrediction">—</div>
+                        <!-- Shown ONLY when result is HABITABLE -->
+                        <div class="habitable-score-text hidden" id="docHabitableScoreBadge"></div>
+                    </div>
+
+                    <div class="doc-habitability-params">
+                        <h4>HABITABILITY PARAMETERS</h4>
+                        <div class="breakdown-meter-list">
+                            <div class="meter-item">
+                                <div class="meter-header">
+                                    <span>Planetary Size</span>
+                                    <strong id="docBarValSize">0%</strong>
+                                </div>
+                                <div class="meter-track">
+                                    <div class="meter-fill" id="docBarFillSize" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="meter-item">
+                                <div class="meter-header">
+                                    <span>Stellar Conditions</span>
+                                    <strong id="docBarValStellar">0%</strong>
+                                </div>
+                                <div class="meter-track">
+                                    <div class="meter-fill" id="docBarFillStellar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="meter-item">
+                                <div class="meter-header">
+                                    <span>Orbital Conditions</span>
+                                    <strong id="docBarValOrbital">0%</strong>
+                                </div>
+                                <div class="meter-track">
+                                    <div class="meter-fill" id="docBarFillOrbital" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="meter-item">
+                                <div class="meter-header">
+                                    <span>Temperature</span>
+                                    <strong id="docBarValTemp">0%</strong>
+                                </div>
+                                <div class="meter-track">
+                                    <div class="meter-fill" id="docBarFillTemp" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CLEAN ASTRONOMY LOADING OVERLAY -->
+    <div id="astronomyLoader" class="astronomy-loader-overlay hidden" aria-live="polite">
+        <div class="loader-content">
+            <div class="loader-orbit-system">
+                <div class="loader-star"></div>
+                <div class="loader-ring ring-1">
+                    <div class="loader-planet p-1"></div>
+                </div>
+                <div class="loader-ring ring-2">
+                    <div class="loader-planet p-2"></div>
+                </div>
+            </div>
+            <div class="loader-text" id="loaderMessage">ANALYZING EXOPLANET TELEMETRY</div>
+        </div>
+    </div>
+
+    <!-- MINIMAL CLEAN FOOTER -->
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>EXO-PLANET HABITABILITY CLASSIFIER</strong>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animation System (must load before app.js) -->
+    <script src="/static/js/animations.js"></script>
+    <!-- JavaScript Controller -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

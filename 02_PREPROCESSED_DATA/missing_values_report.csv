@@ -1,0 +1,70 @@
+Column,Missing Before,Missing After
+P. Name,0,Dropped (Excluded Feature)
+P. Name Kepler,1547,Dropped (Excluded Feature)
+P. Name KOI,2942,Dropped (Excluded Feature)
+P. Zone Class,46,Dropped (Excluded Feature)
+P. Mass Class,6,Dropped (Excluded Feature)
+P. Composition Class,41,Dropped (Excluded Feature)
+P. Atmosphere Class,85,Dropped (Excluded Feature)
+P. Habitable Class,0,Dropped (Excluded Feature)
+P. Min Mass (EU),2727,Dropped (Excluded Feature)
+P. Mass (EU),33,34
+P. Max Mass (EU),3875,Dropped (Excluded Feature)
+P. Radius (EU),12,12
+P. Density (EU),41,42
+P. Gravity (EU),41,41
+P. Esc Vel (EU),41,41
+P. SFlux Min (EU),0,Dropped (Excluded Feature)
+P. SFlux Mean (EU),0,46
+P. SFlux Max (EU),0,Dropped (Excluded Feature)
+P. Teq Min (K),46,Dropped (Excluded Feature)
+P. Teq Mean (K),46,46
+P. Teq Max (K),46,Dropped (Excluded Feature)
+P. Ts Min (K),2126,Dropped (Excluded Feature)
+P. Ts Mean (K),2126,Dropped (Excluded Feature)
+P. Ts Max (K),2126,Dropped (Excluded Feature)
+P. Surf Press (EU),41,41
+P. Mag,56,Dropped (Excluded Feature)
+P. Appar Size (deg),12,Dropped (Excluded Feature)
+P. Period (days),150,150
+P. Sem Major Axis (AU),35,35
+P. Eccentricity,0,0
+P. Mean Distance (AU),35,Dropped (Excluded Feature)
+P. Inclination (deg),3151,Dropped (Excluded Feature)
+P. Omega (deg),0,Dropped (Excluded Feature)
+S. Name,0,Dropped (Excluded Feature)
+S. Name HD,3394,Dropped (Excluded Feature)
+S. Name HIP,3354,Dropped (Excluded Feature)
+S. Constellation,0,Dropped (Excluded Feature)
+S. Type,84,0
+S. Mass (SU),47,47
+S. Radius (SU),112,113
+S. Teff (K),99,100
+S. Luminosity (SU),28,28
+S. [Fe/H],1738,Dropped (Excluded Feature)
+S. Age (Gyrs),1553,Dropped (Excluded Feature)
+S. Appar Mag,929,Dropped (Excluded Feature)
+S. Distance (pc),1187,Dropped (Excluded Feature)
+S. RA (hrs),0,Dropped (Excluded Feature)
+S. DEC (deg),0,Dropped (Excluded Feature)
+S. Mag from Planet,46,Dropped (Excluded Feature)
+S. Size from Planet (deg),128,Dropped (Excluded Feature)
+S. No. Planets,0,0
+S. No. Planets HZ,0,Dropped (Excluded Feature)
+S. Hab Zone Min (AU),115,Dropped (Excluded Feature)
+S. Hab Zone Max (AU),115,Dropped (Excluded Feature)
+P. HZD,46,Dropped (Excluded Feature)
+P. HZC,41,Dropped (Excluded Feature)
+P. HZA,85,Dropped (Excluded Feature)
+P. HZI,85,Dropped (Excluded Feature)
+P. SPH,2074,Dropped (Excluded Feature)
+P. Int ESI,0,Dropped (Excluded Feature)
+P. Surf ESI,0,Dropped (Excluded Feature)
+P. ESI,48,Dropped (Excluded Feature)
+S. HabCat,0,Dropped (Excluded Feature)
+P. Habitable,0,0
+P. Hab Moon,0,Dropped (Excluded Feature)
+P. Confirmed,0,Dropped (Excluded Feature)
+P. Disc. Method,0,0
+P. Disc. Year,0,Dropped (Excluded Feature)
+Unnamed: 68,3873,Dropped (Excluded Feature)

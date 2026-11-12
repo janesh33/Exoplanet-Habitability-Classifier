@@ -1,0 +1,689 @@
+/* ==========================================================================
+   EXO-PLANET HABITABILITY CLASSIFIER — PREMIUM ANIMATION SYSTEM
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. ANIMATION TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
+    --dur-fast:   350ms;
+    --dur-mid:    550ms;
+    --dur-slow:   750ms;
+}
+
+/* --------------------------------------------------------------------------
+   1. HEADER — ENTRANCE FROM TOP
+   -------------------------------------------------------------------------- */
+.app-header-sticky {
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: headerSlideIn 0.65s var(--ease-out-expo) 0.05s forwards;
+}
+
+@keyframes headerSlideIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   2. HERO ENTRANCE SEQUENCE (staggered)
+   -------------------------------------------------------------------------- */
+.hero-main-title {
+    opacity: 0;
+    transform: translateY(36px);
+    animation: heroTitleIn 0.85s var(--ease-out-expo) 0.22s forwards;
+}
+
+@keyframes heroTitleIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.planetary-system-wrapper {
+    opacity: 0;
+    transform: scale(0.9) translateY(16px);
+    animation: heroSystemIn 0.9s var(--ease-out-expo) 0.55s forwards;
+}
+
+@keyframes heroSystemIn {
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.btn-hero-primary {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: heroBtnIn 0.65s var(--ease-out-expo) 0.82s forwards;
+}
+
+.btn-hero-secondary {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: heroBtnIn 0.65s var(--ease-out-expo) 0.98s forwards;
+}
+
+@keyframes heroBtnIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   3. HERO BUTTON MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.btn-hero-primary,
+.btn-hero-secondary {
+    will-change: transform, box-shadow;
+    transition:
+        transform 0.28s var(--ease-out-expo),
+        box-shadow 0.28s var(--ease-out-expo),
+        background 0.28s ease,
+        border-color 0.28s ease;
+}
+
+.btn-hero-primary:active {
+    transform: translateY(-1px) scale(0.975) !important;
+    transition-duration: 0.1s;
+}
+
+.btn-hero-secondary:active {
+    transform: translateY(-1px) scale(0.975) !important;
+    transition-duration: 0.1s;
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO PARALLAX LAYERS
+   -------------------------------------------------------------------------- */
+.stars-bg-canvas { will-change: transform; }
+
+/* --------------------------------------------------------------------------
+   5. SCROLL-REVEAL SYSTEM
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity    var(--dur-slow) var(--ease-out-expo),
+        transform  var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal-on-scroll.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-from-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition:
+        opacity   var(--dur-slow) var(--ease-out-expo),
+        transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal-from-left.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-from-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition:
+        opacity   var(--dur-slow) var(--ease-out-expo),
+        transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal-from-right.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.94) translateY(16px);
+    transition:
+        opacity   var(--dur-slow) var(--ease-out-expo),
+        transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.reveal-scale.is-revealed {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Stagger delay helpers */
+.anim-delay-1  { transition-delay: 80ms  !important; }
+.anim-delay-2  { transition-delay: 160ms !important; }
+.anim-delay-3  { transition-delay: 240ms !important; }
+.anim-delay-4  { transition-delay: 320ms !important; }
+.anim-delay-5  { transition-delay: 400ms !important; }
+.anim-delay-6  { transition-delay: 480ms !important; }
+.anim-delay-7  { transition-delay: 560ms !important; }
+.anim-delay-8  { transition-delay: 640ms !important; }
+.anim-delay-9  { transition-delay: 720ms !important; }
+
+/* --------------------------------------------------------------------------
+   6. SECTION HEADING SLIDE
+   -------------------------------------------------------------------------- */
+.section-title-header {
+    overflow: hidden;
+}
+
+.section-title-header h2 {
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+        opacity   0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+.section-title-header.is-revealed h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   7. SEARCH INPUT EXPANSION ON FOCUS
+   -------------------------------------------------------------------------- */
+.search-input-field {
+    transition:
+        border-color 0.25s ease,
+        box-shadow   0.3s var(--ease-out-expo) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. DROPDOWN SLIDE-DOWN ANIMATION
+   -------------------------------------------------------------------------- */
+.planet-dropdown:not(.hidden) {
+    animation: dropdownOpen 0.25s var(--ease-out-expo) forwards;
+}
+
+@keyframes dropdownOpen {
+    from { opacity: 0; transform: translateY(-8px) scaleY(0.95); }
+    to   { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+.dropdown-item {
+    animation: dropItemIn 0.2s var(--ease-out-expo) both;
+}
+
+.dropdown-item:nth-child(1)  { animation-delay: 0ms; }
+.dropdown-item:nth-child(2)  { animation-delay: 20ms; }
+.dropdown-item:nth-child(3)  { animation-delay: 40ms; }
+.dropdown-item:nth-child(4)  { animation-delay: 60ms; }
+.dropdown-item:nth-child(5)  { animation-delay: 80ms; }
+.dropdown-item:nth-child(6)  { animation-delay: 100ms; }
+.dropdown-item:nth-child(7)  { animation-delay: 120ms; }
+.dropdown-item:nth-child(8)  { animation-delay: 140ms; }
+.dropdown-item:nth-child(9)  { animation-delay: 160ms; }
+.dropdown-item:nth-child(10) { animation-delay: 180ms; }
+
+@keyframes dropItemIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* --------------------------------------------------------------------------
+   9. PRESET CHIPS — STAGGERED FADE-IN
+   -------------------------------------------------------------------------- */
+.preset-chip {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+}
+
+.preset-chip.chip-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+        background   0.2s ease,
+        border-color 0.2s ease,
+        color        0.2s ease,
+        transform    0.2s var(--ease-out-expo),
+        opacity      0.35s var(--ease-out-expo);
+}
+
+.preset-chip:active {
+    transform: scale(0.94) !important;
+    transition-duration: 0.1s !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. RESULT SECTION — SEQUENTIAL CARD ENTRANCE
+   -------------------------------------------------------------------------- */
+#mainResultCard {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    transition:
+        opacity   0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+#mainResultCard.card-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.verdict-tag {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo);
+}
+
+.verdict-title {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.15s, transform 0.5s var(--ease-out-expo) 0.15s;
+}
+
+.habitable-score-text {
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 0.4s ease 0.35s, transform 0.4s var(--ease-spring) 0.35s;
+}
+
+.verdict-tag.verdict-in,
+.verdict-title.verdict-in,
+.habitable-score-text.verdict-in {
+    opacity: 1;
+    transform: none;
+}
+
+#profileSection {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s var(--ease-out-expo) 0.15s, transform 0.6s var(--ease-out-expo) 0.15s;
+}
+
+#profileSection.card-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-box {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity      0.4s var(--ease-out-expo),
+        transform    0.4s var(--ease-out-expo),
+        border-color 0.2s ease;
+}
+
+.stat-box.stat-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-box:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(184, 134, 40, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   11. HABITABILITY METER BARS — STAGGERED ANIMATED FILL
+   -------------------------------------------------------------------------- */
+.meter-fill {
+    width: 0% !important;
+    transition: width 0.9s var(--ease-out-expo) !important;
+}
+
+.meter-header strong {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.meter-header strong.val-visible {
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   12. KEY FACTORS — ALTERNATING SLIDE
+   -------------------------------------------------------------------------- */
+.factor-item:nth-child(odd) {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
+}
+
+.factor-item:nth-child(even) {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
+}
+
+.factor-item.factor-visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+/* --------------------------------------------------------------------------
+   13. EARTH COMPARISON TABLE
+   -------------------------------------------------------------------------- */
+.comparison-table {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
+}
+
+.comparison-table.table-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.comparison-table tbody tr {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo);
+}
+
+.comparison-table tbody tr.row-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.chart-bar-gold,
+.chart-bar-navy {
+    transition: width 0.8s var(--ease-out-expo) !important;
+}
+
+.imp-track div {
+    width: 0 !important;
+    transition: width 0.8s var(--ease-out-expo);
+}
+
+/* --------------------------------------------------------------------------
+   14. DOCUMENT UPLOAD FLOW
+   -------------------------------------------------------------------------- */
+.doc-icon {
+    display: inline-block;
+    animation: docIconFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes docIconFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-7px); }
+}
+
+.upload-dropzone-box {
+    transition:
+        transform     0.28s var(--ease-out-expo),
+        border-color  0.25s ease,
+        background    0.25s ease,
+        box-shadow    0.28s ease;
+}
+
+.upload-dropzone-box:hover,
+.upload-dropzone-box.dragover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 32px rgba(184, 134, 40, 0.12);
+}
+
+.doc-icon.file-selected {
+    animation: iconToDoc 0.4s var(--ease-spring) forwards;
+}
+
+@keyframes iconToDoc {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(0.7) rotate(-8deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* --------------------------------------------------------------------------
+   15. DOCUMENT EVIDENCE REVEAL
+   -------------------------------------------------------------------------- */
+#docResultContainer {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+#docResultContainer.doc-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.evidence-table {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.evidence-table.table-visible {
+    opacity: 1;
+}
+
+.evidence-table tbody tr {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo);
+}
+
+.evidence-table tbody tr.row-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.evidence-stat-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+}
+
+.evidence-stat-card.stat-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   16. MULTIPLE PLANETS PANEL — SLIDE DOWN
+   -------------------------------------------------------------------------- */
+.multiple-planets-notice {
+    overflow: hidden;
+    max-height: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    opacity: 0;
+    transition:
+        max-height 0.45s var(--ease-out-expo),
+        opacity    0.35s ease,
+        padding    0.35s ease,
+        margin     0.35s ease;
+}
+
+.multiple-planets-notice.mp-open {
+    max-height: 300px;
+    opacity: 1;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+
+.mp-btn {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.2s var(--ease-out-expo);
+}
+
+.mp-btn.mp-btn-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --------------------------------------------------------------------------
+   17. DOCUMENT PREDICTION CARD
+   -------------------------------------------------------------------------- */
+.doc-prediction-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    transition:
+        opacity   0.6s var(--ease-out-expo),
+        transform 0.6s var(--ease-out-expo);
+}
+
+.doc-prediction-card.doc-card-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --------------------------------------------------------------------------
+   18. ASTRONOMY LOADER
+   -------------------------------------------------------------------------- */
+.astronomy-loader-overlay {
+    animation: loaderFadeIn 0.3s ease forwards;
+}
+
+.astronomy-loader-overlay.loader-fade-out {
+    animation: loaderFadeOut 0.35s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes loaderFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes loaderFadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+.loader-text::after {
+    content: '';
+    display: inline-block;
+    animation: loadingDots 1.4s step-start infinite;
+}
+
+@keyframes loadingDots {
+    0%  { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+}
+
+/* --------------------------------------------------------------------------
+   19. NAV MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.nav-item {
+    transition:
+        color        0.25s var(--ease-out-expo),
+        background   0.25s var(--ease-out-expo),
+        border-color 0.25s ease,
+        box-shadow   0.25s ease,
+        transform    0.2s  var(--ease-out-expo) !important;
+}
+
+.nav-item:hover {
+    transform: translateY(-1px);
+}
+
+.nav-item:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* --------------------------------------------------------------------------
+   20. CARD HOVER LIFT
+   -------------------------------------------------------------------------- */
+.card {
+    transition:
+        transform    0.3s var(--ease-out-expo),
+        box-shadow   0.3s ease,
+        border-color 0.25s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(13, 23, 42, 0.09);
+}
+
+/* --------------------------------------------------------------------------
+   21. ACTION BUTTON MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.btn-action-gold,
+.btn-action-outline,
+.btn-action-outline-gold {
+    transition:
+        transform    0.22s var(--ease-out-expo),
+        box-shadow   0.22s ease,
+        background   0.22s ease,
+        border-color 0.22s ease,
+        opacity      0.22s ease !important;
+    will-change: transform;
+}
+
+.btn-action-gold:hover:not(:disabled) {
+    transform: translateY(-2px) !important;
+}
+
+.btn-action-gold:active:not(:disabled),
+.btn-action-outline:active:not(:disabled),
+.btn-action-outline-gold:active:not(:disabled) {
+    transform: translateY(0) scale(0.97) !important;
+    transition-duration: 0.1s !important;
+}
+
+/* --------------------------------------------------------------------------
+   22. CATALOGUE MATCH ANIMATION
+   -------------------------------------------------------------------------- */
+.catalogue-verifying {
+    position: relative;
+    overflow: hidden;
+}
+
+.catalogue-verifying::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(184,134,40,0.08) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: verifySweep 1s ease-in-out;
+}
+
+@keyframes verifySweep {
+    to { transform: translateX(100%); }
+}
+
+/* --------------------------------------------------------------------------
+   23. REDUCED MOTION OVERRIDES
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration:        0.01ms !important;
+        animation-iteration-count: 1      !important;
+        transition-duration:       0.01ms !important;
+        scroll-behavior:           auto   !important;
+    }
+
+    .app-header-sticky,
+    .hero-main-title,
+    .planetary-system-wrapper,
+    .btn-hero-primary,
+    .btn-hero-secondary,
+    .reveal-on-scroll,
+    .reveal-from-left,
+    .reveal-from-right,
+    .reveal-scale,
+    #mainResultCard,
+    #profileSection,
+    .stat-box,
+    .factor-item,
+    .doc-prediction-card,
+    #docResultContainer,
+    .evidence-stat-card,
+    .multiple-planets-notice,
+    .mp-btn,
+    .preset-chip,
+    .section-title-header h2,
+    .verdict-tag,
+    .verdict-title,
+    .habitable-score-text {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .multiple-planets-notice.mp-open {
+        max-height: 300px !important;
+        padding: 20px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .meter-fill { transition: none !important; }
+    .orbit-path { animation: none !important; }
+}

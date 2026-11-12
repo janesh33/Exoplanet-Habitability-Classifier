@@ -1,0 +1,32 @@
+{
+    "dataset_name": "Planetary Habitability Laboratory - Habitable Exoplanets Catalog (PHL-ECW)",
+    "source": "Planetary Habitability Laboratory @ University of Puerto Rico at Arecibo",
+    "total_raw_samples": 3875,
+    "total_raw_features": 69,
+    "clean_features_count": 18,
+    "numerical_features_count": 16,
+    "categorical_features_count": 2,
+    "target_column": "P. Habitable",
+    "target_classes": {
+        "0": "Non-Habitable",
+        "1": "Potentially Habitable"
+    },
+    "total_class_distribution": {
+        "0": 3820,
+        "1": 55
+    },
+    "train_samples": 3100,
+    "test_samples": 775,
+    "train_percentage": "80%",
+    "test_percentage": "20%",
+    "train_class_distribution": {
+        "0": 3056,
+        "1": 44
+    },
+    "test_class_distribution": {
+        "0": 764,
+        "1": 11
+    },
+    "stratified": true,
+    "random_state": 42
+}

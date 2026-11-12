@@ -1,0 +1,80 @@
+{
+    "dataset_name": "PHL-ECW Held-Out Test Set (20% partition)",
+    "total_test_samples": 775,
+    "selected_model": "XGBoost",
+    "correct_predictions": 775,
+    "accuracy_percent": 100.0,
+    "precision_percent": 100.0,
+    "recall_percent": 100.0,
+    "f1_score_percent": 100.0,
+    "balanced_accuracy_percent": 100.0,
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": [
+        [
+            764,
+            0
+        ],
+        [
+            0,
+            11
+        ]
+    ],
+    "five_models_summary": {
+        "Logistic Regression": {
+            "cv_pr_auc": 0.5443,
+            "cv_recall": 0.9778,
+            "cv_f1": 0.3928,
+            "cv_balanced_acc": 0.9673,
+            "test_pr_auc": 0.6824,
+            "test_f1": 0.4314,
+            "test_accuracy": 0.9626,
+            "test_precision": 0.275,
+            "test_recall": 1.0
+        },
+        "SVM": {
+            "cv_pr_auc": 0.6038,
+            "cv_recall": 0.9556,
+            "cv_f1": 0.3757,
+            "cv_balanced_acc": 0.9552,
+            "test_pr_auc": 0.7278,
+            "test_f1": 0.4231,
+            "test_accuracy": 0.9613,
+            "test_precision": 0.2683,
+            "test_recall": 1.0
+        },
+        "Decision Tree": {
+            "cv_pr_auc": 0.9083,
+            "cv_recall": 0.9556,
+            "cv_f1": 0.8959,
+            "cv_balanced_acc": 0.9765,
+            "test_pr_auc": 1.0,
+            "test_f1": 0.9565,
+            "test_accuracy": 0.9987,
+            "test_precision": 0.9167,
+            "test_recall": 1.0
+        },
+        "Random Forest": {
+            "cv_pr_auc": 0.9579,
+            "cv_recall": 0.9111,
+            "cv_f1": 0.8933,
+            "cv_balanced_acc": 0.9546,
+            "test_pr_auc": 1.0,
+            "test_f1": 0.9167,
+            "test_accuracy": 0.9974,
+            "test_precision": 0.8462,
+            "test_recall": 1.0
+        },
+        "XGBoost": {
+            "cv_pr_auc": 0.9737,
+            "cv_recall": 0.9333,
+            "cv_f1": 0.9305,
+            "cv_balanced_acc": 0.9662,
+            "test_pr_auc": 1.0,
+            "test_f1": 1.0,
+            "test_accuracy": 1.0,
+            "test_precision": 1.0,
+            "test_recall": 1.0
+        }
+    }
+}

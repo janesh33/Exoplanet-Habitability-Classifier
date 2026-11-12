@@ -1,0 +1,70 @@
+Column Name,Data Type,Missing Values,Missing Percentage,Preprocessing Action
+P. Name,str,0,0.0%,Dropped: Identifier / Non-Predictive
+P. Name Kepler,str,1547,39.92%,Dropped: Identifier / Non-Predictive
+P. Name KOI,float64,2942,75.92%,Dropped: Identifier / Non-Predictive
+P. Zone Class,str,46,1.19%,Dropped: Data Leakage
+P. Mass Class,str,6,0.15%,Dropped: Data Leakage
+P. Composition Class,str,41,1.06%,Dropped: Data Leakage
+P. Atmosphere Class,str,85,2.19%,Dropped: Data Leakage
+P. Habitable Class,str,0,0.0%,Dropped: Data Leakage
+P. Min Mass (EU),float64,2727,70.37%,Dropped: Redundant / High Missingness
+P. Mass (EU),float64,33,0.85%,Retained: Numerical Feature
+P. Max Mass (EU),float64,3875,100.0%,Dropped: Redundant / High Missingness
+P. Radius (EU),float64,12,0.31%,Retained: Numerical Feature
+P. Density (EU),float64,41,1.06%,Retained: Numerical Feature
+P. Gravity (EU),float64,41,1.06%,Retained: Numerical Feature
+P. Esc Vel (EU),float64,41,1.06%,Retained: Numerical Feature
+P. SFlux Min (EU),str,0,0.0%,Dropped: Redundant / High Missingness
+P. SFlux Mean (EU),str,0,0.0%,Retained: Numerical Feature
+P. SFlux Max (EU),str,0,0.0%,Dropped: Redundant / High Missingness
+P. Teq Min (K),float64,46,1.19%,Dropped: Redundant / High Missingness
+P. Teq Mean (K),float64,46,1.19%,Retained: Numerical Feature
+P. Teq Max (K),float64,46,1.19%,Dropped: Redundant / High Missingness
+P. Ts Min (K),float64,2126,54.86%,Dropped: Redundant / High Missingness
+P. Ts Mean (K),float64,2126,54.86%,Dropped: Redundant / High Missingness
+P. Ts Max (K),float64,2126,54.86%,Dropped: Redundant / High Missingness
+P. Surf Press (EU),float64,41,1.06%,Retained: Numerical Feature
+P. Mag,float64,56,1.45%,Dropped: Redundant / High Missingness
+P. Appar Size (deg),float64,12,0.31%,Dropped: Redundant / High Missingness
+P. Period (days),float64,150,3.87%,Retained: Numerical Feature
+P. Sem Major Axis (AU),float64,35,0.9%,Retained: Numerical Feature
+P. Eccentricity,float64,0,0.0%,Retained: Numerical Feature
+P. Mean Distance (AU),float64,35,0.9%,Dropped: Redundant / High Missingness
+P. Inclination (deg),float64,3151,81.32%,Dropped: Redundant / High Missingness
+P. Omega (deg),float64,0,0.0%,Dropped: Redundant / High Missingness
+S. Name,str,0,0.0%,Dropped: Identifier / Non-Predictive
+S. Name HD,str,3394,87.59%,Dropped: Identifier / Non-Predictive
+S. Name HIP,str,3354,86.55%,Dropped: Identifier / Non-Predictive
+S. Constellation,str,0,0.0%,Dropped: Identifier / Non-Predictive
+S. Type,str,84,2.17%,Retained: Categorical Feature
+S. Mass (SU),float64,47,1.21%,Retained: Numerical Feature
+S. Radius (SU),float64,112,2.89%,Retained: Numerical Feature
+S. Teff (K),float64,99,2.55%,Retained: Numerical Feature
+S. Luminosity (SU),float64,28,0.72%,Retained: Numerical Feature
+S. [Fe/H],float64,1738,44.85%,Dropped: Redundant / High Missingness
+S. Age (Gyrs),float64,1553,40.08%,Dropped: Redundant / High Missingness
+S. Appar Mag,float64,929,23.97%,Dropped: Redundant / High Missingness
+S. Distance (pc),float64,1187,30.63%,Dropped: Redundant / High Missingness
+S. RA (hrs),float64,0,0.0%,Dropped: Identifier / Non-Predictive
+S. DEC (deg),float64,0,0.0%,Dropped: Identifier / Non-Predictive
+S. Mag from Planet,float64,46,1.19%,Dropped: Redundant / High Missingness
+S. Size from Planet (deg),float64,128,3.3%,Dropped: Redundant / High Missingness
+S. No. Planets,int64,0,0.0%,Retained: Numerical Feature
+S. No. Planets HZ,int64,0,0.0%,Dropped: Data Leakage
+S. Hab Zone Min (AU),float64,115,2.97%,Dropped: Data Leakage
+S. Hab Zone Max (AU),float64,115,2.97%,Dropped: Data Leakage
+P. HZD,float64,46,1.19%,Dropped: Data Leakage
+P. HZC,float64,41,1.06%,Dropped: Data Leakage
+P. HZA,float64,85,2.19%,Dropped: Data Leakage
+P. HZI,float64,85,2.19%,Dropped: Data Leakage
+P. SPH,float64,2074,53.52%,Dropped: Data Leakage
+P. Int ESI,int64,0,0.0%,Dropped: Data Leakage
+P. Surf ESI,int64,0,0.0%,Dropped: Data Leakage
+P. ESI,float64,48,1.24%,Dropped: Data Leakage
+S. HabCat,int64,0,0.0%,Dropped: Data Leakage
+P. Habitable,int64,0,0.0%,Target Variable
+P. Hab Moon,int64,0,0.0%,Dropped: Data Leakage
+P. Confirmed,int64,0,0.0%,Dropped: Identifier / Non-Predictive
+P. Disc. Method,str,0,0.0%,Retained: Categorical Feature
+P. Disc. Year,str,0,0.0%,Dropped: Identifier / Non-Predictive
+Unnamed: 68,float64,3873,99.95%,Dropped: Identifier / Non-Predictive
